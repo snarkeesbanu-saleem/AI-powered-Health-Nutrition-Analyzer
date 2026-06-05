@@ -28,9 +28,9 @@ export const getRecommendations = createServerFn({ method: "GET" })
       .order("logged_at", { ascending: false })
       .limit(7);
 
-    const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+    const AI_API_KEY = process.env.AI_API_KEY;
+    if (!AI_API_KEY) {
+      throw new Error("AI_API_KEY is not configured");
     }
 
     const prompt = `You are an expert Indian nutritionist and dietician. Based on the user's profile and recent eating habits, provide personalized dietary recommendations.
@@ -88,10 +88,10 @@ Provide a JSON response with this exact structure:
 
 Return ONLY valid JSON, no markdown, no extra text. Focus on practical, culturally relevant Indian and South Indian food recommendations.`;
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        Authorization: `Bearer ${AI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

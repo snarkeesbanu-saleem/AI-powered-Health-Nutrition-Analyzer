@@ -11,9 +11,9 @@ export const analyzeFoodImage = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((input) => analyzeSchema.parse(input))
   .handler(async ({ data }) => {
-    const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+    const AI_API_KEY = process.env.AI_API_KEY;
+    if (!AI_API_KEY) {
+      throw new Error("AI_API_KEY is not configured");
     }
 
     const systemPrompt = `You are an expert nutritionist specializing in Indian and South Indian cuisine. Analyze the food image and return ONLY a valid JSON object with no markdown formatting, no code blocks, and no extra text.
@@ -50,10 +50,10 @@ Important notes:
 - If the dish is unclear, make your best guess and set confidence below 0.7
 - Return ONLY the JSON, no other text.`;
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        Authorization: `Bearer ${AI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
