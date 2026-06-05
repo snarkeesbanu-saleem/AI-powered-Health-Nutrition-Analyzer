@@ -212,6 +212,7 @@ function AuthPage() {
           </p>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }
