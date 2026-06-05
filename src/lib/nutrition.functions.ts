@@ -29,13 +29,13 @@ export const getTodaySummary = createServerFn({ method: "GET" })
 
     const totals = (foodLogs || []).reduce(
       (acc, log) => ({
-        calories: acc.calories + (log.calories || 0),
-        protein: acc.protein + (log.protein || 0),
-        carbs: acc.carbs + (log.carbs || 0),
-        fats: acc.fats + (log.fats || 0),
-        fiber: acc.fiber + (log.fiber || 0),
-        sugar: acc.sugar + (log.sugar || 0),
-        sodium: acc.sodium + (log.sodium || 0),
+        calories: (acc.calories ?? 0) + (log.calories ?? 0),
+        protein: (acc.protein ?? 0) + (log.protein ?? 0),
+        carbs: (acc.carbs ?? 0) + (log.carbs ?? 0),
+        fats: (acc.fats ?? 0) + (log.fats ?? 0),
+        fiber: (acc.fiber ?? 0) + (log.fiber ?? 0),
+        sugar: (acc.sugar ?? 0) + (log.sugar ?? 0),
+        sodium: (acc.sodium ?? 0) + (log.sodium ?? 0),
       }),
       { calories: 0, protein: 0, carbs: 0, fats: 0, fiber: 0, sugar: 0, sodium: 0 }
     );
