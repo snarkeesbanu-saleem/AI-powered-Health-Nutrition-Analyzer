@@ -41,17 +41,18 @@ function AuthPage() {
         const { data, error: signUpError } = await supabase.auth.signUp({
           email,
           password,
+          options: { data: { username } },
         });
         if (signUpError) throw signUpError;
 
-        if (username && data.user) {
-          await upsertProfileFn({ data: { username } });
-        }
-
         if (data.session) {
+          // Session exists (email confirmation disabled) — create profile now.
+          if (username) {
+            await upsertProfileFn({ data: { username } });
+          }
           navigate({ to: "/dashboard" });
         } else {
-          setError("Check your email to confirm your account.");
+          setError("Check your email to confirm your account, then sign in.");
         }
       } else {
         const { error: signInError } = await supabase.auth.signInWithPassword({
