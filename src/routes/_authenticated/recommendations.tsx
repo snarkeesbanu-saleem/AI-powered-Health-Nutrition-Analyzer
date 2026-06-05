@@ -45,8 +45,7 @@ function RecommendationsPage() {
   const handleRefresh = async () => {
     setRefreshing(true);
     try {
-      const getRecs = useServerFn(getRecommendations);
-      await getRecs({ data: {} });
+      await getRecommendations();
       toast.success("Recommendations refreshed!");
     } catch {
       toast.error("Failed to refresh recommendations");
