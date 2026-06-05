@@ -42,7 +42,7 @@ function HistoryPage() {
 
   const logs = data?.logs || [];
   const grouped = logs.reduce((acc: Record<string, typeof logs>, log) => {
-    const date = log.logged_at || new Date(log.created_at).toISOString().split("T")[0];
+    const date = log.logged_at || (log.created_at ? new Date(log.created_at).toISOString().split("T")[0] : null);
     if (!date) return acc;
     if (!acc[date]) acc[date] = [];
     acc[date].push(log);
@@ -97,7 +97,7 @@ function HistoryPage() {
               {grouped[date].map((log) => (
                 <Card key={log.id} className="border-border/40 bg-card/60">
                   <CardContent className="flex items-center gap-3 p-3">
-                    <span className="text-lg">{mealTypeIcon(log.meal_type)}</span>
+                    <span className="text-lg">{mealTypeIcon(log.meal_type || "snack")}</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-foreground truncate">{log.food_name}</p>
                       <div className="flex flex-wrap gap-2 mt-1">

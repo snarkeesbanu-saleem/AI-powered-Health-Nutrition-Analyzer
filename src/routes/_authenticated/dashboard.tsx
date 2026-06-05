@@ -8,6 +8,10 @@ import { getTodaySummary } from "@/lib/nutrition.functions";
 import { getWeightHistory } from "@/lib/nutrition.functions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import foodDosa from "@/assets/food-dosa.jpg";
+import foodBiryani from "@/assets/food-biryani.jpg";
+import foodIdli from "@/assets/food-idli.jpg";
+import foodPongal from "@/assets/food-pongal.jpg";
 import {
   Camera,
   History,
@@ -130,6 +134,13 @@ function DashboardPage() {
     { to: "/bmi", label: "BMI Calculator", icon: Activity, color: "bg-neon-purple/10 text-neon-purple" },
     { to: "/recommendations", label: "Recommendations", icon: Sparkles, color: "bg-chart-3/10 text-chart-3" },
     { to: "/weight", label: "Track Weight", icon: Scale, color: "bg-chart-5/10 text-chart-5" },
+  ];
+
+  const popularDishes = [
+    { name: "Masala Dosa", image: foodDosa, calories: 387, tag: "South Indian" },
+    { name: "Chicken Biryani", image: foodBiryani, calories: 489, tag: "High protein" },
+    { name: "Idli Sambar", image: foodIdli, calories: 132, tag: "Low fat" },
+    { name: "Ven Pongal", image: foodPongal, calories: 286, tag: "Comfort food" },
   ];
 
   return (
@@ -285,6 +296,42 @@ function DashboardPage() {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      <div className="mt-8">
+        <div className="mb-4 flex items-center justify-between">
+          <h2 className="text-xl font-bold text-foreground" style={{ fontFamily: "'Lora', serif" }}>
+            Popular Indian Dishes
+          </h2>
+          <Link to="/analyze" className="text-xs font-medium text-primary hover:underline">
+            Analyze a meal →
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {popularDishes.map((dish) => (
+            <Link
+              key={dish.name}
+              to="/analyze"
+              className="group relative overflow-hidden rounded-xl border border-border/50 bg-card"
+            >
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={dish.image}
+                  alt={dish.name}
+                  loading="lazy"
+                  width={1024}
+                  height={1024}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-3">
+                <p className="text-sm font-semibold text-foreground">{dish.name}</p>
+                <p className="text-[11px] text-muted-foreground">{dish.calories} kcal · {dish.tag}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
