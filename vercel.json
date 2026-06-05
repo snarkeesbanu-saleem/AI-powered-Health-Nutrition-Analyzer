@@ -1,0 +1,10 @@
+﻿{
+  "functions": {
+    "dist/server/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "routes": [
+    { "src": "/(.*)", "dest": "/dist/server/index.js" }
+  ]
+}
