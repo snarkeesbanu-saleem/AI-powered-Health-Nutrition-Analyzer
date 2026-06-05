@@ -8,6 +8,10 @@ import { getTodaySummary } from "@/lib/nutrition.functions";
 import { getWeightHistory } from "@/lib/nutrition.functions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import foodDosa from "@/assets/food-dosa.jpg";
+import foodBiryani from "@/assets/food-biryani.jpg";
+import foodIdli from "@/assets/food-idli.jpg";
+import foodPongal from "@/assets/food-pongal.jpg";
 import {
   Camera,
   History,
