@@ -5,7 +5,7 @@ import { analyzeFoodImage } from "@/lib/food-analysis.functions";
 import { addFoodLog } from "@/lib/nutrition.functions";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Camera, Upload, Loader2, CheckCircle2, Flame, Beef, Wheat, Droplet, Leaf, Candy, Salt, Info } from "lucide-react";
+import { Camera, Upload, Loader2, CheckCircle2, Flame, Beef, Wheat, Droplet, Leaf, Candy, Info } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_authenticated/analyze")({
