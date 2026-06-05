@@ -136,6 +136,13 @@ function DashboardPage() {
     { to: "/weight", label: "Track Weight", icon: Scale, color: "bg-chart-5/10 text-chart-5" },
   ];
 
+  const popularDishes = [
+    { name: "Masala Dosa", image: foodDosa, calories: 387, tag: "South Indian" },
+    { name: "Chicken Biryani", image: foodBiryani, calories: 489, tag: "High protein" },
+    { name: "Idli Sambar", image: foodIdli, calories: 132, tag: "Low fat" },
+    { name: "Ven Pongal", image: foodPongal, calories: 286, tag: "Comfort food" },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <div className="mb-8">
