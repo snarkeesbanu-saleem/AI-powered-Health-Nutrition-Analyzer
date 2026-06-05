@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useServerFn } from "@tanstack/react-start";
 import { upsertProfile } from "@/lib/profile.functions";
 import { Sparkles, Mail, Lock, User, ArrowRight, Chrome } from "lucide-react";
+import authBg from "@/assets/auth-bg.jpg";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -80,7 +81,14 @@ function AuthPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4">
+    <div className="relative flex min-h-screen flex-col items-center justify-center px-4">
+      <img
+        src={authBg}
+        alt="Healthy food and fitness"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+      <div className="relative z-10 flex w-full flex-col items-center">
       <div className="mb-8 flex items-center gap-2">
         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-primary-foreground">
           <Sparkles className="h-6 w-6" />
