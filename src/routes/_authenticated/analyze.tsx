@@ -199,7 +199,7 @@ function AnalyzePage() {
               <div className="grid grid-cols-3 gap-3">
                 <NutrientBox icon={<Leaf className="h-4 w-4" />} label="Fiber" value={`${(analysis.nutrition_per_serving?.fiber_g || 0).toFixed(1)}`} unit="g" color="text-green-400" />
                 <NutrientBox icon={<Candy className="h-4 w-4" />} label="Sugar" value={`${(analysis.nutrition_per_serving?.sugar_g || 0).toFixed(1)}`} unit="g" color="text-yellow-400" />
-                <NutrientBox icon={<Salt className="h-4 w-4" />} label="Sodium" value={`${Math.round(analysis.nutrition_per_serving?.sodium_mg || 0)}`} unit="mg" color="text-red-400" />
+                <NutrientBox icon={<Leaf className="h-4 w-4" />} label="Sodium" value={`${Math.round(analysis.nutrition_per_serving?.sodium_mg || 0)}`} unit="mg" color="text-red-400" />
               </div>
 
               {analysis.health_tags && analysis.health_tags.length > 0 && (

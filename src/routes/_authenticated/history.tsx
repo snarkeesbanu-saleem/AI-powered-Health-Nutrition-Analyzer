@@ -42,7 +42,7 @@ function HistoryPage() {
 
   const logs = data?.logs || [];
   const grouped = logs.reduce((acc: Record<string, typeof logs>, log) => {
-    const date = log.logged_at || new Date(log.created_at).toISOString().split("T")[0];
+    const date = log.logged_at ?? new Date(log.created_at).toISOString().split("T")[0];
     if (!acc[date]) acc[date] = [];
     acc[date].push(log);
     return acc;
