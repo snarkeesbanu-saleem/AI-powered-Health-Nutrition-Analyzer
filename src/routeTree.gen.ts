@@ -12,7 +12,12 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedWeightRouteImport } from './routes/_authenticated/weight'
+import { Route as AuthenticatedRecommendationsRouteImport } from './routes/_authenticated/recommendations'
+import { Route as AuthenticatedHistoryRouteImport } from './routes/_authenticated/history'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedBmiRouteImport } from './routes/_authenticated/bmi'
+import { Route as AuthenticatedAnalyzeRouteImport } from './routes/_authenticated/analyze'
 
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
@@ -28,40 +33,102 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedWeightRoute = AuthenticatedWeightRouteImport.update({
+  id: '/weight',
+  path: '/weight',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRecommendationsRoute =
+  AuthenticatedRecommendationsRouteImport.update({
+    id: '/recommendations',
+    path: '/recommendations',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedHistoryRoute = AuthenticatedHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBmiRoute = AuthenticatedBmiRouteImport.update({
+  id: '/bmi',
+  path: '/bmi',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAnalyzeRoute = AuthenticatedAnalyzeRouteImport.update({
+  id: '/analyze',
+  path: '/analyze',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/analyze': typeof AuthenticatedAnalyzeRoute
+  '/bmi': typeof AuthenticatedBmiRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/history': typeof AuthenticatedHistoryRoute
+  '/recommendations': typeof AuthenticatedRecommendationsRoute
+  '/weight': typeof AuthenticatedWeightRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/analyze': typeof AuthenticatedAnalyzeRoute
+  '/bmi': typeof AuthenticatedBmiRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/history': typeof AuthenticatedHistoryRoute
+  '/recommendations': typeof AuthenticatedRecommendationsRoute
+  '/weight': typeof AuthenticatedWeightRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/analyze': typeof AuthenticatedAnalyzeRoute
+  '/_authenticated/bmi': typeof AuthenticatedBmiRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/history': typeof AuthenticatedHistoryRoute
+  '/_authenticated/recommendations': typeof AuthenticatedRecommendationsRoute
+  '/_authenticated/weight': typeof AuthenticatedWeightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/analyze'
+    | '/bmi'
+    | '/dashboard'
+    | '/history'
+    | '/recommendations'
+    | '/weight'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/dashboard'
+  to:
+    | '/'
+    | '/auth'
+    | '/analyze'
+    | '/bmi'
+    | '/dashboard'
+    | '/history'
+    | '/recommendations'
+    | '/weight'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/analyze'
+    | '/_authenticated/bmi'
     | '/_authenticated/dashboard'
+    | '/_authenticated/history'
+    | '/_authenticated/recommendations'
+    | '/_authenticated/weight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -93,6 +160,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/weight': {
+      id: '/_authenticated/weight'
+      path: '/weight'
+      fullPath: '/weight'
+      preLoaderRoute: typeof AuthenticatedWeightRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/recommendations': {
+      id: '/_authenticated/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof AuthenticatedRecommendationsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/history': {
+      id: '/_authenticated/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof AuthenticatedHistoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -100,15 +188,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/bmi': {
+      id: '/_authenticated/bmi'
+      path: '/bmi'
+      fullPath: '/bmi'
+      preLoaderRoute: typeof AuthenticatedBmiRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/analyze': {
+      id: '/_authenticated/analyze'
+      path: '/analyze'
+      fullPath: '/analyze'
+      preLoaderRoute: typeof AuthenticatedAnalyzeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAnalyzeRoute: typeof AuthenticatedAnalyzeRoute
+  AuthenticatedBmiRoute: typeof AuthenticatedBmiRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedHistoryRoute: typeof AuthenticatedHistoryRoute
+  AuthenticatedRecommendationsRoute: typeof AuthenticatedRecommendationsRoute
+  AuthenticatedWeightRoute: typeof AuthenticatedWeightRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAnalyzeRoute: AuthenticatedAnalyzeRoute,
+  AuthenticatedBmiRoute: AuthenticatedBmiRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedHistoryRoute: AuthenticatedHistoryRoute,
+  AuthenticatedRecommendationsRoute: AuthenticatedRecommendationsRoute,
+  AuthenticatedWeightRoute: AuthenticatedWeightRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
