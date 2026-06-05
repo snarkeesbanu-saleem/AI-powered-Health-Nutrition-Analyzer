@@ -62,7 +62,12 @@ function AuthPage() {
         navigate({ to: "/dashboard" });
       }
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
+      const message = err instanceof Error ? err.message : "Something went wrong";
+      if (mode === "signin" && /invalid login credentials/i.test(message)) {
+        setError("No account found with these details. If you're new, tap \"Sign up\" below to create an account first.");
+      } else {
+        setError(message);
+      }
     } finally {
       setLoading(false);
     }
