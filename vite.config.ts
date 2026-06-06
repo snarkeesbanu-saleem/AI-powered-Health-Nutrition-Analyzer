@@ -10,8 +10,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': path.resolve(__dirname, './src')
+    }
   },
   build: {
     rollupOptions: {
@@ -19,4 +19,7 @@ export default defineConfig({
     },
   },
   logLevel: 'warn',
+  esbuild: {
+    logLevel: 'error',
+  }
 })
