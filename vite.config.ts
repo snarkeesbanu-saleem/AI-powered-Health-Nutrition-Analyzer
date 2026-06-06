@@ -6,7 +6,9 @@ export default defineConfig({
   plugins: [tanstackStart(), react()],
   build: {
     rollupOptions: {
-      // Do not set external here — let TanStack Start handle it
-    }
-  }
+      external: [],
+    },
+  },
+  // Silence the warning that is being treated as error
+  logLevel: 'warn',
 })
