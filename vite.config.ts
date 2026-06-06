@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [tanstackStart(), react()],
   build: {
     rollupOptions: {
-      external: []
+      // Do not set external here — let TanStack Start handle it
     }
   }
 })
