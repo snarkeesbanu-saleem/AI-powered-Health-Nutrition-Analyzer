@@ -77,6 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { title: "AI-powered-Health-Nutrition-Analyzer" },
+      { property: "og:title", content: "AI-powered-Health-Nutrition-Analyzer" },
+      { name: "twitter:title", content: "AI-powered-Health-Nutrition-Analyzer" },
+      { name: "description", content: "AI-powered app analyzes food nutrition from images and offers personalized diet recommendations." },
+      { property: "og:description", content: "AI-powered app analyzes food nutrition from images and offers personalized diet recommendations." },
+      { name: "twitter:description", content: "AI-powered app analyzes food nutrition from images and offers personalized diet recommendations." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0bab8548-c3cd-462c-bfe7-afa488e36007/id-preview-edda3ebd--cffbeaac-90fa-46d5-a9af-f49e530fca8c.lovable.app-1780728298573.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0bab8548-c3cd-462c-bfe7-afa488e36007/id-preview-edda3ebd--cffbeaac-90fa-46d5-a9af-f49e530fca8c.lovable.app-1780728298573.png" },
     ],
     links: [
       {
