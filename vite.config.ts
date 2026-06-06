@@ -9,6 +9,9 @@ export default defineConfig({
       external: [],
     },
   },
-  // Silence the warning that is being treated as error
+  // Important: Make Vite less strict on warnings
   logLevel: 'warn',
+  esbuild: {
+    logLevel: 'error',
+  }
 })
