@@ -19,7 +19,4 @@ export default defineConfig({
     },
   },
   logLevel: 'warn',
-  esbuild: {
-    logLevel: 'error',
-  }
 })
